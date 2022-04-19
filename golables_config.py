@@ -164,7 +164,7 @@ try:
         charactor_table = pd.read_excel(char_tab, dtype=str)  # 支持excel格式的角色配置表
     else:
         charactor_table = pd.read_csv(char_tab, sep="\t", dtype=str)
-    charactor_table.index = charactor_table["Name"] + "." + charactor_table["Subtype"]
+    charactor_table.index = charactor_table["Name"] + "." + charactor_table["Subtype"]  # type: ignore
     if ("Animation" not in charactor_table.columns) | (
         "Bubble" not in charactor_table.columns
     ):  # 139debug
@@ -175,10 +175,9 @@ except Exception as E:
 
 # 载入log文件 parser()
 print("[replay generator]: Parsing Log file.")
-try:
-    stdin_text = open(stdin_log, "r", encoding="utf8").read().split("\n")
-except UnicodeDecodeError as E:
-    logger.exception(E)
+
+stdin_text = open(stdin_log, "r", encoding="utf8").read().split("\n")
+
 
 if stdin_text[0][0] == "\ufeff":  # 139 debug
     print(
@@ -188,26 +187,6 @@ if stdin_text[0][0] == "\ufeff":  # 139 debug
     stdin_text[0] = stdin_text[0][1:]
 
 # render_timeline, break_point, bulitin_media = "", "", ""
-
-
-def parsersr(stdin_text: list[str]):
-    from func import parser
-
-    try:
-        global render_timeline, break_point, bulitin_media
-        render_timeline, break_point, bulitin_media = parser(
-            stdin_text,
-            render_arg,
-            charactor_table,
-        )
-        # print(1, render_timeline)
-        # print(2, break_point, bulitin_media)
-        # print(3, bulitin_media)
-        return render_timeline, break_point, bulitin_media
-    except ParserError as E:
-        logger.exception(E)
-        print(E)
-        print("Error")
 
 
 try:
