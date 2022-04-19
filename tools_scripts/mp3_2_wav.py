@@ -14,15 +14,15 @@ pydub.AudioSegment.ffmpeg = "../ffmpeg.exe"
 try:
     target = sys.argv[1]
 except IndexError:
-    print('Target files path is required!')
+    print("Target files path is required!")
     sys.exit()
 # 寻找文件
 file_path = glob.glob(target)
 print(file_path)
 # 导出wav
 for f in file_path:
-    f = f.replace('\\','/')
+    f = f.replace("\\", "/")
     ifile = pydub.AudioSegment.from_mp3(f)
-    ofile = f.replace('mp3','wav')
-    ifile.export(ofile,format='wav')
-    print(f,'done!')
+    ofile = f.replace("mp3", "wav")
+    ifile.export(ofile, format="wav")
+    print(f, "done!")
