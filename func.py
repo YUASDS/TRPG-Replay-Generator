@@ -14,7 +14,7 @@ from golables_config import (
     GlobalVariable,
     # object_define_text,
     occupied_variable_name,
-)  
+)
 from exception import ParserError
 from media_class import (
     Background,
@@ -1207,6 +1207,7 @@ def render(
             Animation,
             BGM,
             Audio,
+            Background,
         ],
     ],
     screen: pygame.surface.Surface,
