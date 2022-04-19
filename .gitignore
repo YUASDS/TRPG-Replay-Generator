@@ -1,5 +1,10 @@
 test_output/*
-media/save_config
 *.timeline
 *.breakpoint
 *.exe
+13.py
+__pycache__
+toy
+media/sorc.jpg
+test.py
+test2.py
