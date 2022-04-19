@@ -146,7 +146,7 @@ class Bubble:
                     ),
                 )
         if alpha != 100:
-            temp.set_alpha(alpha / 100 * 255)
+            temp.set_alpha(alpha / 100 * 255)  # type: ignore
         surface.blit(temp, render_pos)
 
     def convert(self):
@@ -176,7 +176,7 @@ class Background:
             render_pos = (self.pos[0] + adx, self.pos[1] + ady)
         if alpha != 100:
             temp = self.media.copy()
-            temp.set_alpha(alpha / 100 * 255)
+            temp.set_alpha(alpha / 100 * 255)  # type: ignore
             surface.blit(temp, render_pos)
         else:
             surface.blit(self.media, render_pos)
@@ -392,7 +392,7 @@ class BuiltInAnimation(Animation):
             if (heal_heart) & (layer == 2):  # 恢复动画
                 crop_timeline = sigmoid(0, lost_heart, frame_rate).astype(int)  # 裁剪时间线
                 self.media = np.frompyfunc(
-                    lambda x: canvas.subsurface(0, 0, x, hy), 1, 1
+                    lambda x: canvas.subsurface(0, 0, x, hy), 1, 1  # type: ignore
                 )(
                     crop_timeline
                 )  # 裁剪动画
