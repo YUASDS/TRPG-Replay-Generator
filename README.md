@@ -1,8 +1,18 @@
 # 概述
 
+## 本仓库概述
+
+原作者一个文件便完成了所有功能，但是源码观看以及修改存在一定困难，因此本仓库对源码进行了一定程度上的重构
+
+- 具体变化如下
+  - 本仓库便将源码拆分为多个部分
+  - 将exec与eval生成的变量进行了存储存入了全局变量media_list
+  - 将原本的参数输入方式替代为在golables_config设定方式
+  - 添加poetry依赖安装方式
+
 ![logo](./doc/logo.png)
 
-回声工坊（TRPG-Replay-Generator）是一基于python3 和pygame 的自动replay视频制作工具，旨在替代replay视频和类视觉小说视频制作中的重复工作，显著提升效率。本工具包括主程序、语音合成、导出为PR项目、导出为视频等四个模块；本程序通过文本化编辑完成视频制作，在最大化效率的同时提供了较大的自定义空间，同时也提供了易用的图形化界面。无论是编程和文本处理的熟手，还是视频制作的新手，都可以轻松上手本程序。<br>
+回声工坊（TRPG-Replay-Generator）是一基于python3 和pygame 的自动replay视频制作工具，旨在替代replay视频和类视觉小说视频制作中的重复工作，显著提升效率。本工具包括主程序、语音合成、导出为PR项目、导出为视频等四个模块；本程序通过文本化编辑完成视频制作，在最大化效率的同时提供了较大的自定义空间，同时也提供了易用的图形化界面。无论是编程和文本处理的熟手，还是视频制作的新手，都可以轻松上手本程序。
 
 ## 环境要求
 
@@ -34,14 +44,15 @@
 
 ### 1. 使用源码release
 
-1. 下载源代码的release压缩包，并解压；<br>
-2. 确保python已经准确安装，然后在解压路径，使用终端运行下列命令，安装环境要求；<br>
+1. 下载源代码的release压缩包，并解压；
+
+2. 确保python已经准确安装，然后在解压路径，使用终端运行下列命令，安装环境要求；
 
 ```bash
 pip install -r ./requirements.txt
 ```
 
-3. 使用终端运行下列命令，即可开始放映示例项目；<br>
+3. 使用终端运行下列命令，即可开始放映示例项目；
 
 ```bash
 python ./replay_generator.py -l ./toy/LogFile.txt -d ./toy/MediaObject.txt -t ./toy/CharactorTable.csv
@@ -51,10 +62,10 @@ python ./replay_generator.py -l ./toy/LogFile.txt -d ./toy/MediaObject.txt -t ./
 
 ### 2. 使用可执行文件release
 
-1. 下载可执行文件的release的压缩包，并解压；<br>
-2. 运行 `TRPG-Replay-Generator-v1.0.0.exe` 打开图形界面；<br>
-3. 在媒体定义栏输入 `./toy/MediaObject.txt` ，角色定义栏输入 `./toy/CharactorTable.csv` ，log文件栏输入 `./toy/LogFile.txt` ；<br>
-4. 点击开始，即可开始放映示例项目；<br>
+1. 下载可执行文件的release的压缩包，并解压；
+2. 运行 `TRPG-Replay-Generator-v1.0.0.exe` 打开图形界面；
+3. 在媒体定义栏输入 `./toy/MediaObject.txt` ，角色定义栏输入 `./toy/CharactorTable.csv` ，log文件栏输入 `./toy/LogFile.txt` ；
+4. 点击开始，即可开始放映示例项目；
 5. 进入程序后，按空格键（SPACE）开始播放，播放的过程中，按A键跳转到前一小节，D键跳转到后一小节，按空格暂停播放，ESC键终止播放并退出。
 
 > 注意：可执行文件release无需安装python环境即可运行，但是在效能和稳定性上比运行源码略差。
